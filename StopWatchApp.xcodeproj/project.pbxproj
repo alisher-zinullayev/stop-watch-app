@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		4352C7532A5C70CE00E63B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352C7522A5C70CE00E63B49 /* AppDelegate.swift */; };
 		4352C7552A5C70CE00E63B49 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352C7542A5C70CE00E63B49 /* SceneDelegate.swift */; };
-		4352C7572A5C70CE00E63B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352C7562A5C70CE00E63B49 /* ViewController.swift */; };
+		4352C7572A5C70CE00E63B49 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352C7562A5C70CE00E63B49 /* MainViewController.swift */; };
 		4352C75A2A5C70CE00E63B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4352C7582A5C70CE00E63B49 /* Main.storyboard */; };
 		4352C75C2A5C70D000E63B49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4352C75B2A5C70D000E63B49 /* Assets.xcassets */; };
 		4352C75F2A5C70D000E63B49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4352C75D2A5C70D000E63B49 /* LaunchScreen.storyboard */; };
+		4352C7672A5C71C700E63B49 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4352C7662A5C71C700E63B49 /* HistoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4352C74F2A5C70CE00E63B49 /* StopWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StopWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4352C7522A5C70CE00E63B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4352C7542A5C70CE00E63B49 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4352C7562A5C70CE00E63B49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4352C7562A5C70CE00E63B49 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4352C7592A5C70CE00E63B49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4352C75B2A5C70D000E63B49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4352C75E2A5C70D000E63B49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4352C7602A5C70D000E63B49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4352C7662A5C71C700E63B49 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,12 @@
 			children = (
 				4352C7522A5C70CE00E63B49 /* AppDelegate.swift */,
 				4352C7542A5C70CE00E63B49 /* SceneDelegate.swift */,
-				4352C7562A5C70CE00E63B49 /* ViewController.swift */,
+				4352C7562A5C70CE00E63B49 /* MainViewController.swift */,
 				4352C7582A5C70CE00E63B49 /* Main.storyboard */,
 				4352C75B2A5C70D000E63B49 /* Assets.xcassets */,
 				4352C75D2A5C70D000E63B49 /* LaunchScreen.storyboard */,
 				4352C7602A5C70D000E63B49 /* Info.plist */,
+				4352C7662A5C71C700E63B49 /* HistoryTableViewCell.swift */,
 			);
 			path = StopWatchApp;
 			sourceTree = "<group>";
@@ -138,8 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4352C7572A5C70CE00E63B49 /* ViewController.swift in Sources */,
+				4352C7572A5C70CE00E63B49 /* MainViewController.swift in Sources */,
 				4352C7532A5C70CE00E63B49 /* AppDelegate.swift in Sources */,
+				4352C7672A5C71C700E63B49 /* HistoryTableViewCell.swift in Sources */,
 				4352C7552A5C70CE00E63B49 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
