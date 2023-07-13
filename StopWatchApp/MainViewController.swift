@@ -56,7 +56,7 @@ class MainViewController: UIViewController {
 
     private let historyTableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(HistoryTableViewCell.self, forCellReuseIdentifier: HistoryTableViewCell.identifier)
         return tableView
     }()
 
@@ -82,7 +82,7 @@ class MainViewController: UIViewController {
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
 
-        historyTableView.frame = CGRect(x: 0, y: screenHeight/2, width: displayWidth, height: displayHeight)
+        historyTableView.frame = CGRect(x: 0, y: screenHeight/2, width: displayWidth, height: displayHeight/2)
     }
 
     @objc func leftButtonTapped(sender: UIButton) {
@@ -106,7 +106,6 @@ class MainViewController: UIViewController {
 
     @objc func lapButtonTapped() {
         timerForCurrentTime.invalidate()
-//        currentTime.text = "00:00.00"
         dataHistory.append(totalTime.text ?? "")
         historyTableView.reloadData()
         startTimer()
@@ -127,6 +126,7 @@ class MainViewController: UIViewController {
             timerForCurrentTime = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerUpdate2), userInfo: nil, repeats: true)
             print("lap start button tapped")
         }
+        RunLoop.current.add(timerForCurrentTime, forMode: .common)
     }
     
     @objc func startButtonTapped() {
@@ -166,6 +166,8 @@ class MainViewController: UIViewController {
             leftButton.setTitle("Lap", for: .normal)
             rightButton.setTitle("Stop", for: .normal)
         }
+        RunLoop.current.add(timer, forMode: .common)
+        RunLoop.current.add(timerForCurrentTime, forMode: .common)
     }
 
     @objc func stopButtonTapped() {
@@ -208,8 +210,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reversedIndexPath = IndexPath(row: dataHistory.count - 1 - indexPath.row, section: indexPath.section)
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: reversedIndexPath)
-        cell.textLabel?.text = "Lap \(reversedIndexPath.row+1): \(dataHistory[reversedIndexPath.row])"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.identifier, for: reversedIndexPath) as? HistoryTableViewCell else {return UITableViewCell()}
+        let lapNumber = String(reversedIndexPath.row+1)
+        let timeForIndex = String(dataHistory[reversedIndexPath.row])
+        cell.configure(index: "Lap \(lapNumber)", time: timeForIndex)
+//        cell.textLabel?.text = "Lap \(reversedIndexPath.row+1): \(dataHistory[reversedIndexPath.row])"
         return cell
     }
 }
