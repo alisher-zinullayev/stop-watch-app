@@ -11,6 +11,4 @@ class HistoryTableViewCell: UITableViewCell {
 
     let identifier = "HistoryTableViewCell"
     
-    
-
 }
