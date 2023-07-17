@@ -7,16 +7,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
 
-    let screenWidth = UIScreen.main.bounds.size.width
-    let screenHeight = UIScreen.main.bounds.size.height
+    private let screenWidth = UIScreen.main.bounds.size.width
+    private let screenHeight = UIScreen.main.bounds.size.height
 
-    var timer = Timer()
-    var timerForCurrentTime = Timer()
-    var startTime: Date?
-    var startTimeForCurrentTime: Date?
-    var dataHistory: [String] = []
+    private var timer = Timer()
+    private var timerForCurrentTime = Timer()
+    private var startTime: Date?
+    private var startTimeForCurrentTime: Date?
+    private var dataHistory: [String] = []
 
     private let currentTime: UILabel = {
         let label = UILabel()
@@ -93,7 +93,7 @@ class MainViewController: UIViewController {
         }
     }
 
-    @objc func resetButtonTapped() {
+    @objc private func resetButtonTapped() {
         timer.invalidate()
         currentTime.text = "00:00.00"
         totalTime.text = "00:00.00"
@@ -104,7 +104,7 @@ class MainViewController: UIViewController {
         print("reset button tapped")
     }
 
-    @objc func lapButtonTapped() {
+    @objc private func lapButtonTapped() {
         timerForCurrentTime.invalidate()
         dataHistory.append(totalTime.text ?? "")
         historyTableView.reloadData()
@@ -112,7 +112,7 @@ class MainViewController: UIViewController {
         print("lap button tapped")
     }
 
-    @objc func rightButtonTapped() {
+    @objc private func rightButtonTapped() {
         if rightButton.titleLabel?.text == "Start" {
             startButtonTapped()
         } else {
@@ -120,7 +120,7 @@ class MainViewController: UIViewController {
         }
     }
 
-    @objc func startTimer() {
+    @objc private func startTimer() {
         if !timerForCurrentTime.isValid {
             startTimeForCurrentTime = Date()
             timerForCurrentTime = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(timerUpdate2), userInfo: nil, repeats: true)
@@ -129,7 +129,7 @@ class MainViewController: UIViewController {
         RunLoop.current.add(timerForCurrentTime, forMode: .common)
     }
     
-    @objc func startButtonTapped() {
+    @objc private func startButtonTapped() {
         
         if !timer.isValid {
             if startTime == nil {
@@ -170,7 +170,7 @@ class MainViewController: UIViewController {
         RunLoop.current.add(timerForCurrentTime, forMode: .common)
     }
 
-    @objc func stopButtonTapped() {
+    @objc private func stopButtonTapped() {
         timer.invalidate()
         timerForCurrentTime.invalidate()
         leftButton.setTitle("Reset", for: .normal)
@@ -178,7 +178,7 @@ class MainViewController: UIViewController {
         print("stop button tapped")
     }
 
-    @objc func timerUpdate() {
+    @objc private func timerUpdate() {
         guard let startTime = startTime else {
             return
         }
@@ -190,7 +190,7 @@ class MainViewController: UIViewController {
         self.totalTime.text = String(format: "%02d:%02d.%02d", minutes, seconds, milliseconds)
     }
 
-    @objc func timerUpdate2() {
+    @objc private func timerUpdate2() {
         guard let startTime = startTimeForCurrentTime else {
             return
         }
@@ -214,13 +214,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let lapNumber = String(reversedIndexPath.row+1)
         let timeForIndex = String(dataHistory[reversedIndexPath.row])
         cell.configure(index: "Lap \(lapNumber)", time: timeForIndex)
-//        cell.textLabel?.text = "Lap \(reversedIndexPath.row+1): \(dataHistory[reversedIndexPath.row])"
         return cell
     }
 }
 
 extension MainViewController {
-    func configureNavigationBar() {
+    private func configureNavigationBar() {
         navigationItem.title = "StopWatch"
         navigationItem.titleView?.tintColor = .black
         let appearance = UINavigationBarAppearance()
@@ -230,7 +229,7 @@ extension MainViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
 
-    func setupUI() {
+    private func setupUI() {
         let totalTimeConstraints = [
             totalTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             totalTime.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -(screenHeight/4))

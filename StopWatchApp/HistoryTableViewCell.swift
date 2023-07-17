@@ -7,9 +7,9 @@
 
 import UIKit
 
-class HistoryTableViewCell: UITableViewCell {
+final class HistoryTableViewCell: UITableViewCell {
 
-    static let identifier = "HistoryTableViewCell"
+    static let identifier = String(describing: HistoryTableViewCell.self)
     
     private let lapIndex: UILabel = {
         let label = UILabel()
@@ -34,7 +34,7 @@ class HistoryTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupUI() {
+    private func setupUI() {
         let lapIndexConstraints = [
             lapIndex.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             lapIndex.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20)
@@ -51,5 +51,4 @@ class HistoryTableViewCell: UITableViewCell {
         lapIndex.text = index
         timeForLap.text = time
     }
-    
 }
