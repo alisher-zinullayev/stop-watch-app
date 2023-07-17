@@ -85,7 +85,7 @@ final class MainViewController: UIViewController {
         historyTableView.frame = CGRect(x: 0, y: screenHeight/2, width: displayWidth, height: displayHeight/2)
     }
 
-    @objc func leftButtonTapped(sender: UIButton) {
+    @objc private func leftButtonTapped(sender: UIButton) {
         if leftButton.titleLabel?.text == "Reset" {
             resetButtonTapped()
         } else {
